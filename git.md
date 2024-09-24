@@ -51,18 +51,12 @@
 
 - **標題（Summary）**：
   - 應該簡潔明瞭，通常不超過 50 字元。
-  - 用祈使句來描述變更，例如：`Add feature X`、`Fix bug in Y`。
-  
-- **正文（Body，非必要）**：
-  - 若有必要，正文可以詳細說明變更的背景、目的或原因，通常會用空行分隔標題與正文。正文每行最好不超過 72 字元。
-  
-- **結尾（Footer，非必要）**：
-  - 可以包含 issue tracking 系統的相關資訊，例如 `Closes #123` 來關閉某個 issue。
+  - 用祈使句來描述變更，例如：`Add feature X`、`Fix bug in Y`。 (有些人希望具體修改了甚麼要明確說明)
 
 ### Commit message style（風格）建議：
 
 - **風格一致性**：
-  - 使用固定的風格撰寫 commit message，方便未來檢視歷史紀錄。例如可以參考 [Conventional Commits](https://www.conventionalcommits.org/) 規範，格式如下：
+  - 使用固定的風格撰寫 commit message，方便未來檢視歷史紀錄。像是可以參考 [Conventional Commits](https://www.conventionalcommits.org/) 規範，格式如下：
     ```
     <type>[optional scope]: <description>
     
