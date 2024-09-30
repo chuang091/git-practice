@@ -73,7 +73,7 @@ npm install express --save-dev
     ```
 
     ```bash
-    chuang@ThomasdeMacBook-Air backend % npm start         
+    我的名字@MacBook-Air backend % npm start         
 
     > backend@1.0.0 start
     > node app.js
@@ -144,7 +144,7 @@ npm install express --save-dev
     <pre>Cannot POST /</pre>
     </body>
     </html>
-    `` 
+    ```
 
 ## 設定環境
 
