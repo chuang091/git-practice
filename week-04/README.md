@@ -27,7 +27,7 @@ Ref: [反向代理維基百科](https://zh.wikipedia.org/wiki/%E5%8F%8D%E5%90%91
 
 Ref: [什麼是負載平衡？](https://aws.amazon.com/tw/what-is/load-balancing/)
 
-1. pm2 套件是什麼？有什麼用處？
+**4. pm2 套件是什麼？有什麼用處？**
 
 PM2 是一個 Node.js 的進程管理工具，用於保持應用持續運行和負載平衡。它具有應用程式監控、日誌管理和自動重啟等功能。
 
@@ -35,19 +35,19 @@ Ref:[【筆記】使用 pm2 進行 node 服務管理](https://blog.jsy.tw/2661/p
 
 其他替代方案： `forever` 或 `nodemon`
 
-**4. 步驟 9 中提到的 `proxy` 是什麼意思？為什麼要透過 Nginx 來 `proxy` 到 Express 開發的 Web Server?**
+**5. 步驟 9 中提到的 `proxy` 是什麼意思？為什麼要透過 Nginx 來 `proxy` 到 Express 開發的 Web Server?**
 
 proxy 表示 Nginx 作為一個中轉，在使用者端和伺服器之間轉發請求和響應。
 使用 Nginx 作為反向代理到 Express 伺服器可以提高安全性、加密處理和負載平衡。
 
-**4.1提示 `Reverse proxy` vs `Forward Proxy`**
+**5.1提示 `Reverse proxy` vs `Forward Proxy`**
 
 Reverse Proxy - 接收客戶端請求並將其轉發到內部網絡的伺服器，對外隱藏伺服器真實 IP。
 Forward Proxy - 客戶端連線到代理伺服器，由代理伺服器訪問互聯網資源，用於訪問限制區域的內容。
 
 Ref:[反向代理IP與正向代理IP的詳細區別 — okey proxy](https://medium.com/@grayk3553/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86ip%E8%88%87%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86ip%E7%9A%84%E8%A9%B3%E7%B4%B0%E5%8D%80%E5%88%A5-okey-proxy-4450a01bad78)
 
-**5. 在 readme 中提供步驟 9 的 Nginx 設定檔**
+**6. 在 readme 中提供步驟 9 的 Nginx 設定檔**
 
 ```bash
 server {
@@ -87,13 +87,13 @@ server {
 }
 ```
 
-**5. Security Group 是什麼？用途為何？有什麼設定原則嗎？**
+**7. Security Group 是什麼？用途為何？有什麼設定原則嗎？**
 
 Security Group 是 AWS 中設定虛擬伺服器網絡訪問控制的一種方式，可以定義哪些endpoints可接受來自哪些 IP 地址的流量。
 
 Ref:[【AWS 雲端資安 Inside out】安全群組與NACL建置教學簡介(一)](https://nextlink.cloud/aws-cloud-security-part4/)
 
-**6. 什麼是 sudo? 為什麼有的時候需要加上 sudo，有時候不用？**
+**8. 什麼是 sudo? 為什麼有的時候需要加上 sudo，有時候不用？**
 
 `sudo` (superuser do)是用於 Linux 和 Unix 系統的指令，允許用戶以管理員身份執行指令。
 使用情境：包括安裝套件、修改系統配置文件或管理系統服務等需要管理員權限的操作。
@@ -104,7 +104,7 @@ sudo -i
 ```
 Ref:[sudo 指令使用說明](https://note.drx.tw/2008/01/linuxsudo.html)
 
-**7. Nginx 的 Log 檔案在哪裡？你怎麼找到的？怎麼看 Nginx 的 Log？**
+**9. Nginx 的 Log 檔案在哪裡？你怎麼找到的？怎麼看 Nginx 的 Log？**
 
 Nginx 的日誌文件通常位於 `/var/log/nginx/` 目錄下，包括訪問日誌和錯誤日誌。
 
@@ -123,9 +123,9 @@ tail -f /var/log/nginx/error.log
 
 Ref:[Monitoring Access Log and Error Log in Nginx](https://medium.com/@yunandarpalilati/monitoring-access-log-and-error-log-in-nginx-d5ea089dd7b0)
 
-**8.  其他你在過程中遭遇的問題，有找到解答就記錄下來，沒有可以把問題放著，下次上課討論。如果沒有遇到任何問題，也可以回答「無」**
+**10.  其他你在過程中遭遇的問題，有找到解答就記錄下來，沒有可以把問題放著，下次上課討論。如果沒有遇到任何問題，也可以回答「無」**
 
 過程中遇到 `MODULE_NOT_FOUND` 錯誤，忘記`npm install`(如上log)。
 
-**9.  列出完成本作業時參考的資料**
+**11.  列出完成本作業時參考的資料**
 寫在每題中。
