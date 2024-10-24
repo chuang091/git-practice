@@ -22,42 +22,48 @@ const Map = () => {
     useEffect(() => {
       // 定義幾個示例點
       const points = turf.featureCollection([
-        turf.point([121.5654, 25.0330], { value: 10 }),
-        turf.point([121.5680, 25.0350], { value: 20 }),
-        turf.point([121.5700, 25.0370], { value: 30 }),
+      turf.point([121.5654, 25.0330], { value: 10 }),
+      turf.point([121.5680, 25.0350], { value: 20 }),
+      turf.point([121.5700, 25.0370], { value: 30 }),
+      turf.point([121.5750, 25.0370], { value: 60 }),
+      turf.point([121.577430,24.9878632], { value: 0 }),
       ]);
 
       // 使用 IDW (Inverse Distance Weighting) 進行空間內插法
-      const grid = turf.interpolate(points, 0.01, {
-        //gridType: 'points',
-        gridType: 'square',
-        property: 'value',
-        units: 'kilometers',
+      const grid = turf.interpolate(points, 0.1, {
+      gridType: 'hex',
+      property: 'value',
+      units: 'kilometers',
       });
       console.log(grid);
 
       L.geoJson(grid, {
-        onEachFeature: function (feature, layer) {
-          if (feature.properties && feature.properties.value !== undefined) {
-            layer.bindPopup(feature.properties.value.toFixed(3).toString());
-          }
-        },
-        style: function (feature) {
-          return {
-            "color": getColor(feature.properties.value),
-            "opacity": 1,
-          }
+      onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.value !== undefined) {
+        layer.bindPopup(feature.properties.value.toFixed(3).toString());
+        }
+      },
+      style: function (feature) {
+        return {
+        "color": getColor(feature.properties.value),
+        "opacity": 1,
+        "className": "interpolated-layer"
         }
       }
-      ).addTo(map);
+      }).addTo(map);
       
       //色階
       function getColor(x) {
-        return x < 5 ? '#bd0026' :
-          x < 10 ? '#f03b20' :
-            x < 15 ? '#fd8d3c' :
-              x < 20 ? '#fecc5c' :
-                '#ffffb2';
+      return x < 5 ? '#bd0026' :
+        x < 10 ? '#f03b20' :
+        x < 15 ? '#fd8d3c' :
+        x < 20 ? '#fecc5c' :
+        x < 25 ? '#ffffb2' :
+        x < 30 ? '#d4ee00' :
+        x < 35 ? '#66c2a5' :
+        x < 40 ? '#3288bd' :
+        x < 45 ? '#5e4fa2' :
+        '#7f3b08';
       };
     }, [map]);
 
@@ -82,6 +88,12 @@ const Map = () => {
       </Marker>
       <Marker position={[25.0370, 121.5700]}>
         <Popup>點 3: 值 = 30</Popup>
+      </Marker>
+      <Marker position={[25.0370, 121.5750]}>
+        <Popup>點 4: 值 = 60</Popup>
+      </Marker>
+      <Marker position={[24.9878632,121.577430]}>
+        <Popup>點 5: 值 = 0</Popup>
       </Marker>
     </MapContainer>
   );
