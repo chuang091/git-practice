@@ -4,6 +4,7 @@
 
 [Truf.js](https://turfjs.org/) 實現IDW內插法（Spatial Interpolation）
 
+### Map.js
 ```js
  // 使用 IDW (Inverse Distance Weighting) 進行空間內插法
       const grid = turf.interpolate(points, 0.1, {
