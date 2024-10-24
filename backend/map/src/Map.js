@@ -35,7 +35,7 @@ const Map = () => {
       });
 
       // 使用 IDW (Inverse Distance Weighting) 進行空間內插法
-      const grid = turf.interpolate(turf.featureCollection(points), 0.1, {
+      const grid = turf.interpolate(turf.featureCollection(points), 0.05, {
         gridType: 'hex',
         property: 'value',
         units: 'kilometers',
@@ -55,20 +55,6 @@ const Map = () => {
           };
         }
       }).addTo(map);
-
-      //色階
-      function getColor(x) {
-        return x < 5 ? '#bd0026' :
-          x < 10 ? '#f03b20' :
-          x < 15 ? '#fd8d3c' :
-          x < 20 ? '#fecc5c' :
-          x < 25 ? '#ffffb2' :
-          x < 30 ? '#d4ee00' :
-          x < 35 ? '#66c2a5' :
-          x < 40 ? '#3288bd' :
-          x < 45 ? '#5e4fa2' :
-          '#7f3b08';
-      }
     }, [map, points]);
 
     return null;
@@ -89,12 +75,29 @@ const Map = () => {
       <InterpolatedLayer />
       {/* 添加示例點的標記 */}
       {points.map((point, index) => (
-        <Marker key={index} position={[point.geometry.coordinates[1], point.geometry.coordinates[0]]}>
+        <Marker key={index} position={[point.geometry.coordinates[1], point.geometry.coordinates[0]]} icon={L.divIcon({
+          className: 'custom-icon',
+          html: `<div style="background-color: ${getColor(point.properties.value)}; width: 20px; height: 20px; border-radius: 50%; border: 2px solid white;"></div>`
+        })}>
           <Popup>點 {index + 1}: 值 = {point.properties.value}</Popup>
         </Marker>
       ))}
     </MapContainer>
   );
+
+  //色階
+  function getColor(x) {
+    return x < 5 ? '#bd0026' :
+      x < 10 ? '#f03b20' :
+      x < 15 ? '#fd8d3c' :
+      x < 20 ? '#fecc5c' :
+      x < 25 ? '#ffffb2' :
+      x < 30 ? '#d4ee00' :
+      x < 35 ? '#66c2a5' :
+      x < 40 ? '#3288bd' :
+      x < 45 ? '#5e4fa2' :
+      '#7f3b08';
+  }
 };
 
 export default Map;
