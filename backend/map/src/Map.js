@@ -35,7 +35,7 @@ const Map = () => {
       });
 
       // 使用 IDW (Inverse Distance Weighting) 進行空間內插法
-      const grid = turf.interpolate(turf.featureCollection(points), 0.05, {
+      const grid = turf.interpolate(turf.featureCollection(points), 1, {
         gridType: 'hex',
         property: 'value',
         units: 'kilometers',
